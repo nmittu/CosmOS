@@ -14,6 +14,7 @@ call printString
 mov bx, 0x9000
 mov cl, 2
 mov dl, [BOOTDRIVE]
+mov dh, 1
 
 call diskLoad
 call printString
@@ -42,14 +43,14 @@ endFunc:
 diskLoad:
   push dx
   mov ah, 0x02
-  mov al, 1
+  mov al, dh
   mov ch, 0x00
   mov dh, 0x00
 diskLoadGo:
   int 0x13
   jc diskError
   pop dx
-  cmp al, 1
+  cmp al, dh
   jne diskError
   ret
 diskError:
@@ -70,6 +71,8 @@ switch_to_pm:
 load_kernel:
   mov bx, KERNEL_LOC
   mov cl, 3
+  mov dl, [BOOTDRIVE]
+  mov dh, 30
   call diskLoad
   push bx
   mov bx, LOADEDKERNELSTR
@@ -88,7 +91,7 @@ pm_switched:
   mov gs, ax
   mov ebp, 0x90000
   mov esp, ebp
-  ;call KERNEL_LOC
+  call KERNEL_LOC
   jmp $
 
 

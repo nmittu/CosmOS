@@ -1,4 +1,13 @@
+#include "include/screen.h"
+
 void kmain(){
-  char* screen = (char*) 0xb8000;
-  screen[0] = 'a';
+  clear_screen();
+  //print_char('b', 1, 0, -1);
+  //((char*)VIDEO_ADDRESS)[4] = 'h'
+
+
+  //print("Hello!");
+  //print_char_at('\n', 0, -1);
+  print("Welcome to CosmOS v 1.0!\nCopyright 2017 MittuDev (Nikhil MittuDev)\n\nCosmOS: \\ >");
+  //print("Hello\nW");
 }
