@@ -12,8 +12,8 @@
 
 int get_cursor();
 void set_cursor(int offset);
-void print_char_at(char c, int offset, char attribute_byte);
-void print_at(char* txt, int offset, char attribute_byte);
+void print_char(char c, char attribute_byte);
+void print_attr(char* txt, char attribute_byte);
 void print(char* txt);
 void clear_screen();
 #endif

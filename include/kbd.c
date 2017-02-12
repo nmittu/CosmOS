@@ -96,20 +96,20 @@ void keyboard_handler(struct regs *r){
     else
     {
 		if(scancode == 0x2a){shift = 1;return;}
-		if(scancode == 0x1c){shell_enterpressed();return;}
+		if(scancode == 0x1c){/*shell_enterpressed()*/;return;}
 		if(scancode == 0x0e){
-			if(shell_can_backspace()){
-				printchar(kbdus[scancode]);
+			if(/*shell_can_backspace()*/1){
+				print_char(kbdus[scancode], -1);
 			}
-			shell_backspace();
+			//shell_backspace();
 			return;
 		}
 		if(shift){
-			printchar(kbdus[scancode+90]);
-			shell_addchar(kbdus[scancode+90]);
+			print_char(kbdus[scancode+90], -1);
+			//shell_addchar(kbdus[scancode+90]);
 		}else{
-			printchar(kbdus[scancode]);
-			shell_addchar(kbdus[scancode]);
+			print_char(kbdus[scancode], -1);
+			//shell_addchar(kbdus[scancode]);
 		}
     }
 }
